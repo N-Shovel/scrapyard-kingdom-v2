@@ -1,0 +1,38 @@
+{
+  "name": "scrapyard-kingdom",
+  "private": true,
+  "version": "2.0.0",
+  "description": "3D action tower defense in a junkyard. Rebuilt from scratch with Three.js using the ITE-18 Experience structure.",
+  "author": "Nimrod P. Pala",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "assets:fetch": "node tools/fetch-assets.mjs",
+    "assets:optimize": "node tools/optimize-assets.mjs",
+    "playtest": "node tools/playtest.mjs",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@fontsource/barlow-condensed": "^5.2.6",
+    "@fontsource/dotgothic16": "^5.2.6",
+    "@fontsource/permanent-marker": "^5.2.6",
+    "@fontsource/saira-stencil-one": "^5.2.6",
+    "cannon-es": "^0.20.0",
+    "gsap": "^3.13.0",
+    "lil-gui": "^0.21.0",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^4.2.1",
+    "@gltf-transform/extensions": "^4.2.1",
+    "@gltf-transform/functions": "^4.2.1",
+    "draco3dgltf": "^1.5.7",
+    "meshoptimizer": "^0.25.0",
+    "playwright-core": "^1.56.0",
+    "sharp": "^0.35.5",
+    "vite": "^8.3.6"
+  }
+}
