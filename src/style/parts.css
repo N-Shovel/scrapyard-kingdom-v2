@@ -1,0 +1,78 @@
+/* Pieces the screens share: painted steel plates, masking tape, worn stencil paint, keyboard focus. */
+
+/* A steel plate with a rivet in each corner. plate-go is the one thing to press now. */
+.plate
+{
+    pointer-events: auto;
+    padding: 16px 32px 13px;
+    border: 0;
+    border-bottom: 3px solid var(--primer-dark);
+    background:
+        radial-gradient(circle at 10px 10px, var(--steel) 0 2px, var(--steel-dark) 2.5px 3px, transparent 3.5px),
+        radial-gradient(circle at calc(100% - 10px) 10px, var(--steel) 0 2px, var(--steel-dark) 2.5px 3px, transparent 3.5px),
+        radial-gradient(circle at 10px calc(100% - 10px), var(--steel) 0 2px, var(--steel-dark) 2.5px 3px, transparent 3.5px),
+        radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), var(--steel) 0 2px, var(--steel-dark) 2.5px 3px, transparent 3.5px),
+        var(--primer);
+    color: var(--chalk);
+    font-family: var(--font-stencil);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.plate:hover
+{
+    background-color: var(--primer-dark);
+}
+
+.plate:active
+{
+    transform: translateY(2px);
+    border-bottom-width: 1px;
+}
+
+.plate-go
+{
+    color: var(--hazard);
+}
+
+/* Masking tape with grease pencil on it. Torn ends, a slight tilt from --tilt. */
+.tape
+{
+    display: inline-block;
+    padding: 5px 16px 4px;
+    background: var(--tape);
+    color: var(--carbon);
+    font-family: var(--font-pencil);
+    font-size: 19px;
+    line-height: 1.25;
+    transform: rotate(var(--tilt, -1deg));
+    clip-path: polygon(0 6%, 2% 0, 50% 3%, 98% 0, 100% 8%, 99% 34%, 100% 62%, 98% 100%, 60% 97%, 3% 100%, 0 92%, 1% 55%);
+}
+
+/* Stencil paint that wore off in places */
+.paint
+{
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.16' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 12 0 0 0 -3.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.16' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 12 0 0 0 -3.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    -webkit-mask-size: 420px;
+    mask-size: 420px;
+}
+
+.plate:focus-visible,
+.tag:focus-visible,
+.part:focus-visible
+{
+    outline: 3px solid var(--hazard);
+    outline-offset: 4px;
+}
+
+.loading
+{
+    position: absolute;
+    left: 28px;
+    bottom: 24px;
+    color: var(--chalk);
+    font-family: var(--font-pencil);
+    font-size: 22px;
+}

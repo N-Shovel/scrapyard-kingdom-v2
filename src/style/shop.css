@@ -1,0 +1,187 @@
+/* The workshop: parts tags hung on a pegboard. Punched holes are the levels bought. */
+.shop
+{
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    display: none;
+    padding: 24px;
+    background: var(--veil);
+}
+
+.ui[data-state="shop"] .shop
+{
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pegboard
+{
+    position: relative;
+    width: min(1000px, 100%);
+    padding: 26px 34px 24px;
+    background-color: var(--masonite);
+    background-image: radial-gradient(circle, var(--masonite-dark) 0 2.6px, transparent 3.2px);
+    background-size: 26px 26px;
+    background-position: 13px 13px;
+    border: 8px solid var(--masonite-dark);
+}
+
+.pegboard-name
+{
+    color: var(--chalk);
+    font-family: var(--font-stencil);
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.pegboard-back
+{
+    position: absolute;
+    top: 24px;
+    right: 30px;
+    padding: 12px 22px 10px;
+    font-size: 20px;
+}
+
+.pegboard-tags
+{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 34px 22px;
+    margin-top: 34px;
+}
+
+.part
+{
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 168px;
+    padding: 28px 14px 12px;
+    border: 0;
+    background: none;
+    color: var(--carbon);
+    font-family: var(--font-body);
+    text-align: left;
+    transform: rotate(var(--tilt));
+    transform-origin: 50% 10px;
+    cursor: pointer;
+}
+
+.part::after
+{
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 50% 12px, transparent 0 3.5px, var(--brass) 4px 7px, transparent 7.5px),
+        var(--manila);
+    clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%, 0 16px);
+}
+
+/* The peg it hangs on */
+.part::before
+{
+    content: '';
+    position: absolute;
+    left: calc(50% - 3px);
+    top: 6px;
+    z-index: 1;
+    width: 6px;
+    height: 10px;
+    background: var(--steel);
+    outline: 1px solid var(--steel-dark);
+}
+
+.part:not(:disabled):hover
+{
+    transform: rotate(0deg);
+}
+
+.part-name
+{
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.05;
+}
+
+.part-desc
+{
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.part-holes
+{
+    display: flex;
+    gap: 6px;
+    min-height: 12px;
+    margin-top: 6px;
+}
+
+.part-holes i
+{
+    width: 11px;
+    height: 11px;
+    border: 1.5px solid var(--carbon);
+    border-radius: 50%;
+}
+
+/* Punched through, the board shows behind */
+.part-holes i.punched
+{
+    background: var(--masonite-dark);
+    border-color: var(--masonite-dark);
+}
+
+.part-price
+{
+    margin-top: auto;
+    padding-top: 8px;
+    font-family: var(--font-pencil);
+    font-size: 22px;
+}
+
+.part.short .part-price
+{
+    color: var(--red-lead);
+}
+
+.part.maxed
+{
+    cursor: default;
+}
+
+.part.maxed .part-price
+{
+    align-self: flex-start;
+    padding: 1px 8px 0;
+    border: 2px solid var(--red-lead);
+    color: var(--red-lead);
+    font-family: var(--font-stencil);
+    font-size: 18px;
+    transform: rotate(-5deg);
+}
+
+.pegboard-note
+{
+    margin-top: 26px;
+    color: var(--chalk);
+    font-family: var(--font-pencil);
+    font-size: 19px;
+}
+
+@media (max-width: 1000px)
+{
+    .pegboard-tags
+    {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
