@@ -1,0 +1,96 @@
+/* Credits: a typed sheet clipped to a masonite board, over the title. Scrolls inside its own frame. */
+.credits
+{
+    position: absolute;
+    inset: 0;
+    z-index: 9;
+    display: none;
+    justify-content: center;
+    padding: 5vh 16px;
+    background: var(--veil);
+    overflow-y: auto;
+}
+
+.ui[data-state="title"] .credits.open
+{
+    pointer-events: auto;
+    display: flex;
+}
+
+.credits-sheet
+{
+    position: relative;
+    align-self: flex-start;
+    width: min(760px, 100%);
+    padding: 34px 34px 28px;
+    border-top: 18px solid var(--steel-dark);
+    background: var(--manila);
+    color: var(--carbon);
+    font-family: var(--font-ticket);
+    font-size: 13px;
+    line-height: 1.5;
+    box-shadow: 0 6px 0 var(--masonite-dark);
+    rotate: -0.6deg;
+}
+
+/* The clip that holds it to the board */
+.credits-sheet::before
+{
+    content: '';
+    position: absolute;
+    top: -26px;
+    left: 50%;
+    width: 120px;
+    height: 22px;
+    margin-left: -60px;
+    border-radius: 3px;
+    background: var(--steel);
+    border-bottom: 3px solid var(--steel-dark);
+}
+
+.credits-title
+{
+    margin-bottom: 14px;
+    font-family: var(--font-stencil);
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.credits-sheet h3
+{
+    margin: 20px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--carbon);
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Name, who made it, the license: three columns that fold under each other when narrow */
+.credits-row
+{
+    display: grid;
+    grid-template-columns: 1.5fr 1.2fr 0.8fr;
+    gap: 4px 14px;
+    padding: 5px 0;
+    border-bottom: 1px dotted rgb(34 32 28 / 0.35);
+}
+
+.credits-row a
+{
+    color: var(--red-lead);
+    text-underline-offset: 2px;
+}
+
+.credits-back
+{
+    margin-top: 22px;
+}
+
+@media (max-width: 640px)
+{
+    .credits-row
+    {
+        grid-template-columns: 1fr;
+    }
+}

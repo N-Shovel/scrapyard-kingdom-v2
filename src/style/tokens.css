@@ -1,0 +1,31 @@
+/* The only place colors and fonts are defined. See docs/PLAN.md, design notes. */
+@import '@fontsource/saira-stencil-one/400.css';
+@import '@fontsource/barlow-condensed/500.css';
+@import '@fontsource/barlow-condensed/700.css';
+@import '@fontsource/permanent-marker/400.css';
+@import '@fontsource/dotgothic16/400.css';
+
+:root
+{
+    --primer: #4b5144;
+    --primer-dark: #33382e;
+    --red-lead: #8c3b22;
+    --hazard: #e2b100;
+    --manila: #d6c58f;
+    --carbon: #22201c;
+    --chalk: #ece5d2;
+    --oil: #15130f;
+    --tape: #cfc394;
+    --steel: #8f928b;
+    --steel-dark: #3d403a;
+    --brass: #a8873f;
+    --masonite: #6b5034;
+    --masonite-dark: #3f2e1d;
+    --veil: rgb(21 19 15 / 0.62);
+    --lens: rgb(10 9 7 / 0.5);
+
+    --font-stencil: 'Saira Stencil One', Impact, sans-serif;
+    --font-body: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    --font-pencil: 'Permanent Marker', 'Comic Sans MS', cursive;
+    --font-ticket: 'DotGothic16', 'Courier New', monospace;
+}

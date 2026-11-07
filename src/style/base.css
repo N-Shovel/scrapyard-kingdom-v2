@@ -1,0 +1,83 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body
+{
+    overflow: hidden;
+    background: var(--oil);
+    color: var(--chalk);
+    font-family: var(--font-body);
+    font-weight: 500;
+    user-select: none;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+.ui
+{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    isolation: isolate;
+}
+
+/* The lens over the yard, under every plate: darker corners and a fine grain that shifts each few frames.
+   CSS, not a post pass, because a bloom and grade composer cost 3 to 4 ms of the frame. */
+.ui::before,
+.ui::after
+{
+    content: '';
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.ui::before
+{
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 45%, var(--lens) 100%);
+}
+
+.ui::after
+{
+    inset: -64px;
+    background: var(--oil);
+    opacity: 0.1;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 -0.8'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 -0.8'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    animation: grain 0.6s steps(1) infinite;
+    will-change: transform;
+}
+
+@keyframes grain
+{
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-23px, 17px); }
+    40% { transform: translate(31px, -9px); }
+    60% { transform: translate(-11px, -29px); }
+    80% { transform: translate(19px, 27px); }
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    .ui::after
+    {
+        animation: none;
+    }
+}
+
+.hidden
+{
+    display: none !important;
+}
