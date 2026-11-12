@@ -1,0 +1,7 @@
+node_modules/
+dist/
+tools/.cache/
+tools/.playtest/
+*.blend1
+graphify-out/cache/
+graphify-out/
